@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Desafio árvore Tanabata</title>
+        <link rel="stylesheet" href="./CSS/tanzaku.css">
+        <link rel="stylesheet" href="./CSS/fundo.css">
+        <link rel="stylesheet" href="./CSS/bambu.css">
+        <link rel="stylesheet" href="./CSS/button.css">
+    </head>
+    
+    <body>
+        <div class="ceu">
+            <div id="lua"></div>
+            <div class="meteoro"></div>
+            <div class="tanzaku maior" style="--bg:#3de068;--left:40px;--rotate:-45deg;"></div>
+        </div>
+        <div class="frente">
+            <button title="Adicionar novo tanzaku"><span>+</span> tanzaku</button>
+            <div class="bambu">
+                
+                <div class="galho right" style="--top:2px; --width:40px;">
+                    <div class="folha" style="--left:30px;--top:-7px;--rotate:-30deg;"></div>
+                    <div class="folha" style="--left:10px;--top:7px;--rotate:30deg;"></div>
+                    <div class="tanzaku" style="--bg:#3de068;--left:10px;--rotate:45deg;"></div>
+                
+                </div>
+                <div class="galho right" style="--top:180px;--width:80px;">
+                    <div class="folha" style="--left:30px;--top:-7px;--rotate:-30deg;"></div>
+                    <div class="folha" style="--left:10px;--top:7px;--rotate:30deg;"></div>
+                    <div class="tanzaku" style="--bg:#e88c13;--left:20px;--rotate:45deg;"></div>
+                    <div class="tanzaku" style="--bg:#138ce8;--left:50px;--rotate:45deg;"></div>
+                
+                </div>
+                <div class="galho left"  style="--top:150px;--width:100px;">
+                    <div class="folha" style="--left:30px;--top:-9px;--rotate:40deg;"></div>
+                    <div class="folha" style="--left:-10px;--top:-9px;--rotate:40deg;"></div>
+                    <div class="folha" style="--left:10px;--top:10px;--rotate:-45deg;"></div>
+                    <div class="folha" style="--left:40px;--top:10px;--rotate:-45deg;"></div>
+                    <div class="folha" style="--left:43px;--top:10px;--rotate:-80deg;"></div>
+                </div>
+                <div class="galho left"  style="--top:300px;--width:50px;">
+                    <div class="folha" style="--left:20px;--top:-9px;--rotate:40deg;"></div>
+                    <div class="folha" style="--left:-10px;--top:-9px;--rotate:40deg;"></div>
+                    <div class="folha" style="--left:10px;--top:10px;--rotate:-45deg;"></div>
+                    <div class="folha" style="--left:18px;--top:10px;--rotate:-90deg;"></div>
+                </div>
+
+                <div class="line"  style="--top:10px; "></div>
+                <div class="line"  style="--top:70px; "></div>
+                <div class="line"  style="--top:130px;"></div>
+                <div class="line"  style="--top:190px;"></div>
+                <div class="line"  style="--top:250px;"></div>
+                <div class="line"  style="--top:310px;"></div>
+            </div>
+        </div>
+    </body>
+
+    <script src="./JS/estrela.js"></script>
+    <script src="./JS/tanzaku.js"></script>
+</html>

@@ -1,0 +1,66 @@
+.tanzaku{
+    position: absolute;
+    transform: rotate(var(--rotate));
+    left: var(--left);
+    top: 10px;
+    width: 7.5px;
+    height: 37.5px;
+    background-color: var(--bg);
+    font-size: .5px;
+    color: white;
+    white-space: normal;
+    text-overflow: ellipsis;
+    animation: rodar 1s linear infinite;
+}
+.tanzaku:not(.tanzaku.maior)::before{
+    content:"";
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translate(-50%,-90%);
+    width: 1px;
+    height: 20px;
+    background-color: white;
+}
+.tanzaku::after{
+    content: "";
+    position: absolute;
+    display: block;
+    top: 1px;
+    left: 50%;
+    width: 2px;
+    height: 2px;
+    transform: translateX(-50%);
+    background-color: rgb(0, 0, 14);
+    border-radius: 50%;
+}
+.tanzaku.maior{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    animation: none;
+    transform: scale(20) rotate(-90deg) translateX(-10px);
+}
+@keyframes sugir {
+    0%{
+        transform: scale(20) rotate(-90deg) translateX(-10px);
+    }
+    50%{
+        transform: scale(20) rotate(-90deg) translateX(50%);
+    }
+    100%{
+        transform: scale(20) rotate(-90deg) translateX(-60vh);
+    }
+}
+
+@keyframes rodar{
+    0%{
+        transform: rotate(var(--rotate)) scaleX(1);
+    }
+    50%{
+        transform: rotate(var(--rotate)) scaleX(0.1);
+    }
+    100%{
+        transform: rotate(var(--rotate)) scaleX(1);
+    }
+}

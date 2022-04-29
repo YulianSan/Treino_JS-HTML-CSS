@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação de pulse</title>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+        font-family:Arial, Helvetica, sans-serif;
+    }
+    
+    body{
+        height: 100vh;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+    }
+    .pulse{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #007180;
+        text-align: center;
+        line-height: 100px;
+        color:white;
+        font-weight: 200;
+        text-transform: uppercase;
+    }
+    .effect{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #007180;
+        text-align: center;
+        line-height: 100px;
+        color:white;
+        animation: effect 3s linear infinite;
+    }
+    @keyframes effect{
+        0%{
+            transform: scale(1);
+            background-color:#007180;
+        }
+        50%{
+            transform: scale(2);
+            background-color:#00718000;
+        }
+        /* 51%{
+            transform: scale(1);
+            background-color:#00718000;
+        } */
+        52%{
+            transform: scale(1);
+            background-color:#007180;
+        }
+        100%{
+            transform: scale(1.5);
+            background-color:#00718000;
+        }
+    }
+</style>
+<body>
+    <div class="effect"></div>
+    <div class="pulse">  pulse  </div>
+</body>
+</html>

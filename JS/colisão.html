@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colisão</title>
+</head>
+<style>
+    canvas{
+        border:1px solid black;
+    }
+</style>
+<body>
+    <canvas width="500" height="500" id="canvs"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById('canvs');
+    var ctx = canvas.getContext('2d');
+    var evento=addEventListener("keydown",andar);
+    var globais={
+        frames:0
+    }
+    var objetos={
+        x:0,y:0,colisao:false,velx:1,vely:1,
+        desenharCirculo(x,y){
+
+            ctx.beginPath();
+            ctx.fillStyle="red";
+            //arc(x,y,raio,angulo inicial,angulo final,n sei)
+            ctx.arc(x, y, 35, 0, Math.PI * 2, true); 
+            ctx.fill();
+        },
+        desenharFundo(){
+            ctx.fillStyle="white";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        },
+        desenhaTriangulo(x,y){
+            ctx.fillStyle="black";
+            ctx.beginPath();
+            ctx.moveTo(x,y);
+            ctx.lineTo(200+x,y);
+            ctx.lineTo(200+x,y+100);
+            ctx.fill();
+        },desenharQuadrado(x,y){
+            ctx.fillStyle = "black";
+            ctx.fillRect(x, y, 50, 50);
+        }
+    }
+    function andar(e) {
+        var tecla = e.keyCode;
+        if(tecla == 40 && colisao(200,100,objetos.x,objetos.y+2,50,50,250,250)==false){
+            objetos.y+=2;
+        }if(tecla==39 && colisao(200,100,objetos.x+2,objetos.y,50,50,250,250)==false){
+            objetos.x+=2;
+        }if(tecla==38 && colisao(200,100,objetos.x,objetos.y-2,50,50,250,250)==false){
+            objetos.y-=2;
+        }if(tecla==37 && colisao(200,100,objetos.x-2,objetos.y,50,50,250,250)==false){
+            objetos.x-=2;
+        }
+    }
+    function desenharTudo() {
+        objetos.desenharFundo();
+        objetos.desenhaTriangulo(objetos.x,objetos.y);
+        objetos.desenharQuadrado(250,250);
+
+        
+    }
+    function colisao(w,h,x,y,w1,h1,x1,y1) {
+        var sobe=h/w;
+        var cmc= h+y;
+        var cmc1=w+x;
+        if(cmc1>x1 && cmc>y1 && x<w1+x1 && y<y1+h1){
+            //console.log(cmc);
+            objetos.colisao=false;
+            var execuX= 0;
+            var execuY= 0;// ou h
+            for(var i = w;i>0;i-=sobe){
+                execuX+=1;
+                execuY+= sobe;// ou soma -
+                var Nx=(x+execuX);
+                var Ny=(y+execuY);
+                if(Nx>x1 && Nx<x1+w1 && Ny>y1 && y<y1+h1 && objetos.colisao==false){
+                    return true;
+                    objetos.colisao=true;
+                    i=0;
+                }
+                
+            }
+            return false;
+            
+        }
+        return false;
+        
+    }
+    // function distacia(x1,x2,y1,y2) {
+    //     let dist = Math.sqrt(Math.pow((x1-x2),2)+Math.pow((y1-y2),2));
+        
+    //     if(35+35>dist){
+    //         if(y1>y2){
+    //             return "baixo";
+    //         }else if(y1<y2){
+    //             return "cima";
+    //         }
+    //         return "sobre";
+    //     }
+    //     return false;
+    // }
+    function loop() {
+        desenharTudo();
+        globais.frames++;
+        requestAnimationFrame(loop);
+    }
+    loop();
+</script>
+</html>

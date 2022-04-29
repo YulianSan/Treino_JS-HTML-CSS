@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variáveis</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Convereter valores
+    var singed = 1.99;
+    console.log(parseInt(singed))//converte o valor em um inteiro
+    console.log((singed.toString())+10)//vira em uma string
+    var singedString = `${singed}`;//tbm converte em uma string
+    console.log(typeof singedString);
+    var arrayzinho = ["primeiro","segundo","terceiro"]
+    var [p,s,t] = arrayzinho //saida, p=primeiro,s=segundo ...
+
+    var objetizinho={nome:"Yulian",idade:27,email:"knoob0733@gmail.com"}
+
+    var {idade} = objetizinho;
+
+    function validarIdade( { email , idade } ){
+        console.log(email + " "+ idade );
+    }
+
+    validarIdade(objetizinho)
+    console.log(typeof true)
+
+    var array1 = [1,2,3,4,5,6,7,8];
+    var array2 = array1; //o array2 faz uma referencia aou array1, então quando se altera um altera o outro, e tipo um AS em MySql
+    array2[0]=0;//aletera os dois arrays
+    console.log(...array2);
+    console.log(...array1);
+
+    //apenas duplicar o array sem fazer referencia 
+    var array3 = [1,2,3,4,5,6,7,8];
+    var array4 = [...array3];
+    array4[0]=0;
+    console.log(...array3);
+    console.log(...array4);
+    
+    // o msm para objetos
+    var obj1={nome:"Yulian",idade:17}
+    var obj2 =obj1;
+    obj1.nome="yu";
+    console.log(obj1);
+    console.log(obj2);
+
+    var obj3={nome:"Yulian",idade:17}
+    var obj4 ={...obj3};// duplica, sem fazer referencia
+    obj3.nome="yu";
+    console.log(obj3);
+    console.log(obj4);
+</script>
+</html>

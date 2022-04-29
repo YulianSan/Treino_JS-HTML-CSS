@@ -1,0 +1,46 @@
+button{
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    padding: 15px;
+    padding-top: 5px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-bottom-right-radius: 50%;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-shadow: 0px 0px 10px white;
+}
+button span{
+    font-size: 30px;
+    text-shadow: 0px 0px 10px white;
+}
+button::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 160px;
+    height: 90px;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    top: 100%;
+    left: -3px;
+    border-top-left-radius: 50%;
+    box-shadow: -40px -20px 0px black;
+    cursor: default;
+}
+button::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 90px;
+    height: 160px;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    top: -3px;
+    left: 100%;
+    border-top-left-radius: 50%;
+    box-shadow: -19px -40px 0px black;
+    cursor: default;
+}

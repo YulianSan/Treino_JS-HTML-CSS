@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Aula 04 - JavaScript</title>
+    
+    <style>
+        #final{
+            width: 800px;
+            height: 800px;
+            
+        }
+        div{
+            display: inline-block;
+        }
+        #fundo{
+            width: 300px;
+            border-radius: 50px;
+            padding: 10px;
+            height: 800px;
+            background-color: rgb(48, 48, 48);
+            
+            
+        }
+        #fundo1{
+            width: 300px;
+            
+            border-radius: 50px;
+            padding: 10px;
+            height: 800px;
+            background-color: rgb(48, 48, 48);
+            
+        }
+        #amar,#amar1{
+            width: 90%;
+            height: 30%;
+            background-color:rgb(35, 35, 35) ;
+            border-radius: 175px;
+            margin-left: 5%;
+            margin-top: 3.3%;
+            border: 2px solid white;
+        }
+        #verd{
+            width: 90%;
+            height: 30%;
+            background-color:green;
+            border-radius: 175px;
+            margin-left: 5%;
+            margin-top: 3.3%;
+            border: 2px solid white;
+        }
+        #verd1{
+            width: 90%;
+            height: 30%;
+            border-radius: 175px;
+            margin-left: 5%;
+            margin-top: 3.3%;
+            background-color:rgb(35, 35, 35) ;
+            border: 2px solid white;
+        }
+        #verm{
+            width: 90%;
+            height: 30%;
+            background-color:rgb(35, 35, 35) ;
+            border-radius: 175px;
+            margin-left: 5%;
+            margin-top: 3.3%;
+            border: 2px solid white;
+        }
+        #verm1{
+            width: 90%;
+            height: 30%;
+            background-color:red;
+            border-radius: 175px;
+            margin-left: 5%;
+            margin-top: 3.3%;
+            border: 2px solid white;
+        }
+        #temporizador{
+            float: right;
+            width: auto;
+            height: auto;
+            background-color: black;
+            color: white;
+            font-size: 50px;
+            font-family: 'Courier New';
+        }
+    </style>
+</head>
+<body>
+    <div id="final">
+    <div id="fundo">
+        <div id="verd"></div>
+        <div id="amar"></div>
+        <div id="verm"></div>
+                           
+        
+    </div>
+    <div id="fundo1">
+        <div id="verd1"></div>      
+        <div id="amar1"></div>                   
+        <div id="verm1"></div>
+    </div>
+    <p id="temporizador">1</p>
+</div>
+
+<script>
+        var ps = document.getElementById("temporizador");
+        var vm = document.getElementById("verm");
+        var vd = document.getElementById("verd");
+        var am = document.getElementById("amar");
+        
+        var vm1 = document.getElementById("verm1");
+        var vd1 = document.getElementById("verd1");
+        var am1 = document.getElementById("amar1");
+        var i=1; const j=0;var t=0;
+        function tempo(){
+            t+=1;
+            t=t/10;
+            ps.textContent=t;
+            t=t*10;
+            
+        }
+        const tim = setInterval(tempo, 100);
+        function mudarCor0() {
+            
+            if(i<5){
+               vd1.style.backgroundColor= "rgb(35, 35, 35)";
+                vm1.style.backgroundColor= "red";
+                am1.style.backgroundColor= "rgb(35, 35, 35)"; 
+            }else if(i<9){
+                vd1.style.backgroundColor= "green"; 
+                vm1.style.backgroundColor= "rgb(35, 35, 35)";
+                am1.style.backgroundColor= "rgb(35, 35, 35)"; 
+            }else if(i<10){
+                vm1.style.backgroundColor= "rgb(35, 35, 35)";
+                vd1.style.backgroundColor= "rgb(35, 35, 35)";
+                am1.style.backgroundColor= "yellow";
+            }
+            if(i<4){
+                vd.style.backgroundColor= "green"; 
+                vm.style.backgroundColor= "rgb(35, 35, 35)";
+                am.style.backgroundColor= "rgb(35, 35, 35)";
+                
+                
+            }else if(i<5){
+                vm.style.backgroundColor= "rgb(35, 35, 35)";
+                vd.style.backgroundColor= "rgb(35, 35, 35)";
+                am.style.backgroundColor= "yellow";
+
+            }else if(i<10){               
+                vd.style.backgroundColor= "rgb(35, 35, 35)";
+                vm.style.backgroundColor= "red";
+                am.style.backgroundColor= "rgb(35, 35, 35)";
+                i==0;
+            }
+            if(i<9){
+                i++;
+            }else{
+                i=1;
+            }
+            
+        }
+         
+        const createClock = setInterval(mudarCor0, 3000);
+    </script>
+</body>
+</html>

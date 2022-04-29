@@ -1,0 +1,113 @@
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    top: 0px;
+    /* animation: olhar-ceu 2s 2s forwards; */
+    overflow-y: hidden;
+}
+.frente{
+    height: 100vh;
+    position: relative;
+    top: 0px;
+    background-image: linear-gradient(rgb(0, 0, 19) 0%,rgb(0, 0, 65) 100%);
+    transition: top 2s;
+    overflow-y: hidden;
+}
+.ceu{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: -100vh;
+    background-image: linear-gradient(rgb(0, 0, 15),rgb(0, 0, 19));
+    overflow: hidden;
+}
+#lua{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    transform: translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ddd;
+    box-shadow: 0px 0px 50px white;
+    z-index: 100000;
+}
+.meteoro{
+    position: absolute;
+    left: 100%;
+    top: 20%;
+    transform: translateY(-50%) rotate(-25deg);
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    box-sizing: content-box;
+    animation: meteoro-caindo 3s 2s linear infinite forwards;
+}
+.meteoro::after{
+    content:"";
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 0px;
+    height: 0px;
+    border: 3px solid transparent;
+    border-left: 100px solid white;
+    filter: blur(.6px);
+}
+.meteoro::before{
+    content:"";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    filter: blur(10px);
+    border-radius: 50%;
+}
+.estrela{
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px #ffffff;
+    left: var(--left);
+    top: var(--top);
+}
+@keyframes meteoro-caindo {
+    0%{
+        left: 100%;
+        top: 20%;
+    }
+    100%{
+        left: -10%;
+        top: 100%;
+    }
+}
+@keyframes olhar-ceu {
+    0%{
+        top:0px;
+    }
+    100%{
+        top: 100vh;
+    }
+}
+@keyframes olhar-frente {
+    0%{
+        top:100vh;
+    }
+    100%{
+        top: 0px;
+    }
+}

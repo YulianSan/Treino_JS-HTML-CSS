@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genius 2000 versão pirata</title>
+    <link rel="icon" href="./genius.jpg">
+</head>
+<style>
+    #Genius{
+        width: 500px;
+        height: 500px;
+        background-color: rgb(10, 10, 10);
+        border: 20px solid black;
+        padding: 30px;
+        box-sizing: border-box;
+        border-radius: 50%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        position: relative;
+        box-shadow: 
+        40px 15px 15px rgba(27, 27, 27, 0.75),
+        30px 15px 15px rgba(0, 0, 0, 0.75);
+        
+    }
+    #btn-red,#btn-green,#btn-blue,#btn-yellow{
+        width: 190px;
+        height: 190px;
+        
+        box-sizing: border-box;
+    }
+    #btn-red{
+        margin-right: 10px;
+        border-top-left-radius: 100%;
+        background-color: rgb(201, 57, 57);
+    }
+    #btn-blue{
+        border-bottom-right-radius: 100%;
+        background-color: rgb(54, 54, 182);
+    }
+    #btn-yellow{
+        border-bottom-left-radius: 100%;
+        background-color: rgb(201, 201, 53);
+    }
+    #btn-green{
+        border-top-right-radius: 100%;
+        background-color: rgb(24, 92, 24);
+    }
+    #centro{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 150px;
+        height: 150px;
+        background-color: #ccc;
+        border-radius: 50%;
+        border: 20px solid rgb(10, 10, 10);
+        transform: translate(-50%,-50%);
+        text-align: center;
+    }
+    #centro > button{
+        margin-top: 30px;
+        border: none;
+        background-color: transparent;
+        border: 1px solid rgb(172, 172, 172);
+        color: gray;
+        border-radius: 20px;
+    }
+</style>
+<body>
+    <div id="Genius">
+        <div id="btn-red"></div>
+        <div id="btn-green"></div>
+        <div id="centro"><button id="btn-inicia">iniciar jogo</button></div>
+        <div id="btn-yellow"></div>
+        <div id="btn-blue"></div>
+    </div>
+    <script>
+        
+
+        const botoes=[document.getElementById("btn-red"),
+                    document.getElementById("btn-green"),
+                    document.getElementById("btn-yellow"),
+                    document.getElementById("btn-blue"),
+                    document.getElementById("centro")];
+
+        const botoesComando=[document.getElementById("btn-inicia")]
+        
+        const coresBrilhantes=["red",
+                    "Lime",
+                    "yellow",
+                    "blue"]
+        const coresNormais=["rgb(201, 57, 57)",
+                            "rgb(24, 92, 24)",
+                            "rgb(201, 201, 53)",
+                            "rgb(54, 54, 182)"]
+
+            
+        botoes.forEach((element, indice) => {
+                    if(indice!=4){
+                        element.addEventListener("click",()=>{
+                            if(!podeJogar){
+                                console.log(element+": não pode jogar ainda")                            
+                            }
+                            else{
+                                acerteSequencia(element,indice)
+                            }
+                        })
+                    }
+        });
+
+        var sequencia = []
+        var sequenciaEmJogo= []
+        var indice=0;
+        var intervalo;
+        var podeJogar=false
+        var ganhou=0 //0 em jogo, 1 perdeu, 2 ganhou
+
+        const criarSequencia = ()=>{
+
+            let selecionado = Math.trunc(Math.random()*4)
+            sequencia.push(selecionado)
+            sequenciaEmJogo=Array.from(sequencia)
+            
+        }
+
+        const desenharSequencia = ()=>{
+            
+            if(sequenciaEmJogo.length>0){
+                
+                let selecionado = sequenciaEmJogo[0]
+                botoes[selecionado].style.backgroundColor=coresBrilhantes[selecionado];
+                botoes[selecionado].style.boxShadow=`0 0 50px ${coresBrilhantes[selecionado]}`
+                
+                setTimeout(()=>{
+                    botoes[selecionado].style.backgroundColor=coresNormais[selecionado];
+                    botoes[selecionado].style.boxShadow=`none`
+                },900);
+                
+                sequenciaEmJogo.shift();
+                
+            }
+            else{
+                console.log("Cabou de desenhar")
+                botoes[4].style.backgroundColor="white"
+                sequenciaEmJogo=Array.from(sequencia)
+                indice=0
+                podeJogar=true
+                clearInterval(intervalo)
+                return
+            }
+        }
+
+        const acerteSequencia=(e,i)=>{
+            
+            botoes[i].style.backgroundColor=coresBrilhantes[i];
+            botoes[i].style.boxShadow=`0 0 50px ${coresBrilhantes[i]}`
+            setTimeout(()=>{
+                botoes[i].style.backgroundColor=coresNormais[i];
+                botoes[i].style.boxShadow=`none`
+            },500);
+            console.log(`Você chutou: ${i} || Resposta certa: ${sequencia[indice]} || indice: ${indice}`)
+            if(sequencia.length>indice && i==sequencia[indice]){
+                console.log("Acertouuuuuu")
+                
+            }else{
+                ganhou=1
+                podeJogar=false
+                console.log("Errouuuuuuuu")
+
+                sequenciaEmJogo=[]
+                sequencia=[]
+                botoes[4].style.backgroundColor="#ccc"
+                alert("perdeu, começando um novo jogo")
+                iniciarJogo()
+                return
+            }
+            if(sequencia.length<=indice+1 ){
+                ganhou=2
+                indice=0
+                podeJogar=false
+                botoes[4].style.backgroundColor="#ccc"
+                iniciarJogo()
+                return
+            }
+            
+            indice++
+        }
+
+        const iniciarJogo = ()=>{
+            criarSequencia()
+            intervalo = setInterval(desenharSequencia,1000)
+        }
+        iniciarJogo()
+    </script>
+</body>
+</html>

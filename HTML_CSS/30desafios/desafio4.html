@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão com animação da hora</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing:border-box;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+    }
+    body{
+        height: 100vh;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+    }
+    button{
+        cursor: pointer;
+        position: relative;
+        padding: 20px;
+        width: 300px;
+        height: 100px;
+        border: none;
+        background-color: transparent;
+        color: white;
+        text-shadow:0px 0px 10px white;
+        text-transform: uppercase;
+        border: 5px solid white;
+    }
+    button::after{
+        content: "";
+        display: block;
+        position: absolute;
+        background-color: rgb(0, 0, 0);
+        width: 30px;
+        height: 5px;
+        top: 90px;
+        left:30px;
+        transition:all .3s linear;
+        transform:skewX(30deg);
+    }
+    button::before{
+        content: "";
+        display: block;
+        position: absolute;
+        background-color: rgb(0, 0, 0);
+        width: 30px;
+        height: 5px;
+        top: -5px;
+        left: 230px;
+        transition:all .3s linear;
+        transform:skewX(30deg);
+    }
+    button:hover::after{
+        left: 230px;
+    }
+    button:hover::before{
+        left: 30px;
+    }
+</style>
+<body>
+    <button>Mono Singed</button>
+</body>
+</html>

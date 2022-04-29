@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animações legais</title>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+    }
+    body{
+        background-color: black;
+    }
+    #slides{
+        width: 100%;
+        height: 80vh;
+        background-color: gray;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        position: relative;
+    }
+    .slide{
+        width: auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+    .slide img{
+        width: 300px;
+        height: auto;        
+        position: relative;
+        
+    }
+    /* divs */
+    
+    #sld-1{
+        
+        position: absolute;
+        left: 0%;
+    }
+    #sld-2{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #sld-3{
+        position: absolute;
+        left: 100%;
+        transform:translateX(-100%);
+    }
+    
+    /* Imagens */
+    #sld-1 img{
+        transform: skewY(30deg) scaleX(.6) scaleY(.8);
+        margin-top: -50%;
+    }
+    #sld-2 img{
+        transform: scale(1.5);
+    }
+    #sld-3 img{
+        margin-top: -50%;
+        transform: skewY(-30deg) scaleX(.6) scaleY(.8);
+        
+    }
+    button{
+        background-color: transparent;
+        color: white;
+        border: none;
+        box-shadow:0px 0px 10px black ;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        z-index: 100000;
+    }
+    #esquerda{
+        position: absolute;
+        top: 50%;
+        left: 2%;
+        transform: translateY(-50%);
+    }
+    #direita{
+        position: absolute;
+        top: 50%;
+        left: 98%;
+        transform: translate(-100%,-50%);
+    }
+    /* movimentos para esquerda */
+
+    @keyframes move_3_TO_2 {
+        from{
+            z-index: 100000;
+            transform: translateX(-100%);
+            left: 100%;
+        }
+        to{
+            transform: translateX(-50%);
+            left: 50%;
+            z-index: 100;
+        }
+    }
+
+    @keyframes move_2_TO_1 {
+        from{
+            z-index: 100000;
+            transform: translateX(-50%);
+            left: 50%;
+        }
+        to{
+            transform: translateX(0%);
+            left: 0%;
+            z-index: 100;
+        }
+    }
+
+    @keyframes move_1_TO_3 {
+        0%{
+            z-index: 100;
+            transform: translateX(0%);
+            left: 0%;
+        }
+        
+        100%{
+            
+            transform: translateX(-100%);
+            left: 100%;
+        }
+    }
+
+    /* girar imagens esquerda */
+    @keyframes girar_Meio {
+        from{
+            transform: skewY(-30deg) scaleX(.6) scaleY(.8);
+            margin-top: -50%;
+        }
+        to{
+            transform: skewY(0deg) scale(1.5);
+            margin-top: 0%;
+        }
+    } 
+
+    @keyframes girar_Esquerda_1 {
+        from{
+            transform: skewY(0deg) scale(1.5);
+            margin-top: 0%;
+        }
+        to{
+            transform: skewY(30deg) scaleX(.6) scaleY(.8);
+            margin-top: -50%;
+        }
+    }
+
+    @keyframes girar_Esquerda_2 {
+        from{
+            transform: skewY(30deg) scaleX(.6) scaleY(.8);
+            margin-top: -50%;
+        }
+        to{
+            transform: skewY(-30deg) scaleX(.6) scaleY(.8);
+            margin-top: -50%;
+        }
+    }
+</style>
+<body>
+    <div id="slides">
+        <button id="esquerda"><</button>
+        <button id="direita">></button>
+        <div class="slide" id="sld-1">
+            <img src="https://pt.bcdn.biz/Images/2017/4/27/e46ac0c3-93ca-437d-8268-4c1aa5e4a0f9.jpg" alt="slide-1">
+        </div>
+        <div class="slide" id="sld-2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5q9gNmrS7FOTERzzVvqx8GAtZI_p4wVJd2khz_UP5lQvS4dPmOhSD3e382jOtgQ1EiSk&usqp=CAU" alt="slide-2">
+        </div>
+        <div class="slide" id="sld-3">
+            <img src="https://www.netmundi.org/home/wp-content/uploads/2020/03/camille-pissarro-imagem-destacada-1-1024x576.jpg" alt="slide-3">
+        </div>
+    </div>
+    <script>
+        const btn_esquerda = document.getElementById("esquerda")
+        const btn_direita = document.getElementById("direita")
+        const slides=[document.getElementById("sld-1"),document.getElementById("sld-2"),document.getElementById("sld-3")]
+        const imgs=document.images;
+        var index_Centro=1;
+        document.body.onload = ()=>{
+            btn_esquerda.addEventListener("click",()=>{
+                console.log("esquerda")
+                moverEsquerda()
+            })
+            btn_direita.addEventListener("click",()=>{
+                console.log("direita")
+            })
+        }
+        
+
+        function moverEsquerda(){
+
+            if(index_Centro==0){
+                console.log("elemento 1 no centro")
+                slides[2].style.animation="move_1_TO_3 3s forwards"
+                slides[0].style.animation="move_2_TO_1 3s forwards"
+                slides[1].style.animation="move_3_TO_2 3s forwards"
+                imgs[2].style.animation="girar_Esquerda_2 2s forwards"
+                imgs[0].style.animation="girar_Esquerda_1 2s forwards"
+                imgs[1].style.animation="girar_Meio 2s forwards"
+                index_Centro++;
+
+            }else if(index_Centro==1){
+                console.log("elemento 2 no centro")
+                slides[0].style.animation="move_1_TO_3 3s forwards"
+                slides[1].style.animation="move_2_TO_1 3s forwards"
+                slides[2].style.animation="move_3_TO_2 3s forwards"
+                imgs[0].style.animation="girar_Esquerda_2 2s forwards"
+                imgs[1].style.animation="girar_Esquerda_1 2s forwards"
+                imgs[2].style.animation="girar_Meio 2s forwards"
+                index_Centro++;
+            }else if(index_Centro==2){
+                console.log("elemento 3 no centro")
+                slides[1].style.animation="move_1_TO_3 3s forwards"
+                slides[2].style.animation="move_2_TO_1 3s forwards"
+                slides[0].style.animation="move_3_TO_2 3s forwards"
+                imgs[1].style.animation="girar_Esquerda_2 2s forwards"
+                imgs[2].style.animation="girar_Esquerda_1 2s forwards"
+                imgs[0].style.animation="girar_Meio 2s forwards"
+                index_Centro=0;
+
+            }
+            
+        }
+
+    </script>
+</body>
+</html>

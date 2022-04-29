@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerta Personalizado</title>
+</head>
+<body>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .alerta{
+            position: absolute;
+            width: 500px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ddd;
+            
+        }
+        .alerta-header{
+            padding: 15px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            text-align: center;
+            align-items: center;
+               
+        }
+        .alerta-header > button{
+            width: 30px;
+            height: 30px;
+            background-color: red;
+        }
+        .alerta-body{
+            min-height: 300px;
+        }
+    </style>
+</body>
+<script>
+    
+    var btn_criar = document.createElement('button')
+    btn_criar.textContent="Criar alert"
+    document.body.appendChild(btn_criar)
+    btn_criar.onclick=()=>criarAlertPersonalizado("Mensagem aleatória","Olá Mundo","blue","black")
+    var criou=0
+    
+    function criarAlertPersonalizado(title,text,color,bg_color) {
+        if(criou==0){
+            criou=1;
+            var painel = document.createElement('div');
+            painel.setAttribute('class','alerta')
+            
+            painel.style.color=color
+            document.body.appendChild(painel)
+            
+            var header = document.createElement('div')
+            header.setAttribute('class','alerta-header')
+            painel.appendChild(header)
+
+            var btn_close = document.createElement('button')
+            btn_close.textContent="X"
+            header.appendChild(btn_close)
+            
+            var titulo = document.createElement('h3')
+            titulo.setAttribute('id','alerta-msg')
+            titulo.textContent=title
+            header.appendChild(titulo)
+
+            var body = document.createElement('div')
+            body.setAttribute('class','alerta-body')
+            body.style.backgroundColor=bg_color
+            painel.appendChild(body)
+
+            var msg = document.createElement('p')
+            msg.textContent=text
+            body.appendChild(msg)
+
+            btn_close.onclick = ()=>{
+            criou=0;
+            painel.parentNode.removeChild(painel)
+            }
+        }
+        
+    }
+    
+</script>
+</html>

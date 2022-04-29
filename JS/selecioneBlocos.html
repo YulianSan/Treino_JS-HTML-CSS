@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selecione blocos</title>
+</head>
+<style>
+    #div-pai{
+        background-color: black;
+        width: 400px;
+        height: 400px;
+        display: grid;
+    }
+    .divs-clicaveis{
+        margin: 0;
+    }
+</style>
+<body>
+    <div id="div-pai">
+
+    </div>
+    <script>
+        const divPai=document.getElementById('div-pai');
+        const [divPaiW,divPaiH]=[divPai.offsetHeight,divPai.offsetWidth]
+        
+        
+        
+        
+        function addChild(qntChildForRow) {
+            var colunasNoGrid="";
+            for(var i=0;i<qntChildForRow;i++){
+                colunasNoGrid+="1fr "
+            }
+            console.log(colunasNoGrid)
+            divPai.style.gridTemplateColumns=colunasNoGrid
+            let divisaoW = divPaiW/qntChildForRow
+            let divisaoH = divPaiW/qntChildForRow
+            // let gridCodigo=""
+            // for(let i=0;i<qntFilhosPorLinha;i++){
+            //     gridCodigo+="1fr"
+            // }
+            // divPai.style.gridTemplateColumns=gridCodigo
+            let numFilhos=Math.pow(qntChildForRow,2)
+            console.log(numFilhos)
+            let filhos='';
+            for(let i=0;i<numFilhos;i++){
+                filhos+=`<div class="divs-clicaveis" style="width:${divisaoW}px;height:${divisaoH}px;"></div>`
+            }
+            divPai.innerHTML=filhos
+            addEventChild()
+        }
+        addChild(50);
+        function colorir(e) {
+            e.target.style.backgroundColor="rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")";
+        }
+        //depois de criar os filhos vou colocar o evento neles
+        function addEventChild(){
+            var todosChild=document.getElementsByClassName('divs-clicaveis');
+            for(var i=0;i<todosChild.length;i++){
+                todosChild[i].addEventListener("mouseover",colorir)
+            }
+        }
+        
+
+    </script>
+</body>
+</html>

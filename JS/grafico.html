@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gráficos</title>
+</head>
+<body>
+    <canvas id="Janela" width="600" height="600"></canvas>
+    <script>
+
+        var canvas = document.getElementById("Janela");
+        var ctx = canvas.getContext("2d");
+        var anguloInicialGlobal=0;
+        // function desenharBarra(v1,v2,v3) {
+        //     const tamanhoBarra = 400;
+        //     var maiorValor = 0;
+        //     if(v1>v2 && v1>v3){
+        //         maiorValor = v1;
+        //     }else if(v2>v3){
+        //         maiorValor = v2;
+        //     }else{
+        //         maiorValor = v3;
+        //     }
+
+        //     var total = v1+v2+v3;
+        //     ctx.beginPath();
+        //     ctx.rect(10, 10, 30, tamanhoBarra*(v1/maiorValor));
+        //     ctx.fill();
+
+        //     ctx.beginPath();
+        //     ctx.rect(50, 10, 30, tamanhoBarra*(v2/maiorValor));
+        //     ctx.fill();
+
+        //     ctx.beginPath();
+        //     ctx.rect(90, 10, 30, tamanhoBarra*(v3/maiorValor));
+        //     ctx.fill();
+        // }
+        //desenharBarra(0.5,1,2);
+        
+        setInterval(()=>{
+            
+            graficoCirculo(2,1,2,1,2,1,2,1);
+            anguloInicialGlobal+= 0.1;
+        },10)
+        function graficoCirculo(...v) {
+            const raio=100;
+            var cores=["Lime","DarkSlateGray","pink","yellow","orange","SlateBlue","DarkTurquoise","Olive"]
+            var total=v.reduce((valor,valor_A_SerSomado)=>{
+                return valor_A_SerSomado+valor;
+            })
+            for (let i = 0; i < v.length; i++) {
+                
+                var porcentagemInicial;
+                var porcentagemFinal;
+                
+                if(i==0){
+                    porcentagemFinal=v[i]/total;
+                    porcentagemInicial=0;
+                    
+                }else{
+                    var valoresAnteriores=0;
+                    for(var j=0;j<i;j++){
+                        valoresAnteriores +=v[j]
+                    }
+                    porcentagemFinal=(v[i]+valoresAnteriores)/total;
+                    porcentagemInicial=(valoresAnteriores)/total;
+                }
+                
+                 
+
+                var centroCirculo=400;
+                
+                var anguloInicial       = (porcentagemInicial * 360)+anguloInicialGlobal;
+                var anguloFinal         = (porcentagemFinal   * 360)+(anguloInicialGlobal-0.5);
+                var angEmRadFinal       = (anguloFinal*Math.PI)/180;
+                var angEmRadInicial     = (anguloInicial*Math.PI)/180;
+                // console.log(angEmRadFinal+">s"+angEmRadInicial)
+                // var sen                 = Math.sin(angEmRadFinal);
+                // var cos                 = Math.cos(angEmRadFinal);
+                // var medCatetoAdjacente  = 25;
+
+                // var medHipotenusa       = (25/cos);
+                // var medCatetoOposto     = (25/sen);
+
+                ctx.fillStyle           = cores[i];
+                // console.log(porcentagemInicial);
+                //  console.log(porcentagemFinal);
+
+                //Desenha um pedaço do gráfico
+               
+                ctx.beginPath();
+                ctx.moveTo(centroCirculo,centroCirculo);
+                // ctx.lineTo(centroCirculo+medCatetoAdjacente,centroCirculo)
+                // ctx.lineTo(centroCirculo+medCatetoAdjacente,centroCirculo+medCatetoOposto)
+                ctx.arc(centroCirculo,centroCirculo,raio,angEmRadInicial,angEmRadFinal);
+                ctx.fill();
+                
+            }
+            
+
+        }
+        
+    </script>
+</body>
+</html>

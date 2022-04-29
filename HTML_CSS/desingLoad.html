@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load</title>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        
+        background-color: black;
+    }
+    #center{
+        width: 600px;
+        height: 300px;
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+    .circulo{
+        width: 300px;
+        height: 300px;
+        background-color:transparent;
+        border-radius:50%;
+        display: inline-block;
+        border: 10px dotted rgb(0, 201, 0);
+        
+    }
+    .circulo:nth-child(1){
+        border-left: 27px dotted lime;
+        animation: load1 2.5s infinite;
+    }
+    .circulo:nth-child(2){
+        border-right: 27px dotted lime;
+        margin-left:-15px;
+        animation: load2 2.5s infinite;
+    }
+    @keyframes load1 {
+        0%{
+            transform: rotate(0);
+            filter: hue-rotate(0deg);
+        }
+        100%{
+            transform:rotate(360deg);
+            filter:hue-rotate(360deg);
+        }
+    }
+    @keyframes load2 {
+        0%{
+            transform: rotate(0);
+            filter: hue-rotate(0deg);
+        }
+        100%{
+            transform:rotate(-360deg);
+            filter:hue-rotate(360deg);
+        }
+    }
+    
+    
+</style>
+<body>
+    <p>animações 2mil</p>
+    <div id="center">
+        <div class="circulo"></div>
+        <div class="circulo"></div>
+    </div>
+</body>
+</html>

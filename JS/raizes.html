@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raizes</title>
+</head>
+<script>
+    function calcular(el){ 
+        var x = 0;
+        var n=el.value
+        if(isNaN(n)){
+            return console.log("Digite apenas números")
+        }
+        n = parseInt(n,10)
+
+        while(n>(x*x) && n !=(x*x)){
+            x++;
+            console.log(`Execução ${x}`)
+            
+        }
+        return console.log(n==x*x?x:"Raiz não é exata")
+    }
+</script>
+<body>
+    <input type="text" onchange="calcular(this)">
+</body>
+</html>

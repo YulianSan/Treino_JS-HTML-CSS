@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            font-family: "VT323";
+            font-size:30px;
+        }
+        h2{
+            display: none;
+        }
+        p{
+            font-size:40px;
+        }
+    </style>
+    <!--<h2 id="txt">Os românticos recusam-se a reconhecer as diferenças entre uma e outra. :)</h2>-->
+    <p id="txtMuda"></p>
+    <script>
+        var texto=prompt("escreva um texto para");
+        var textoLetra;
+        var textoMuda=document.getElementById("txtMuda");
+        var todoText;
+        var executa=0;
+
+        function dividirTexto(){
+            textoLetra=texto.split("");
+
+        }
+        function mostrarTexto(){
+            
+            if(executa<textoLetra.length){
+                if(executa==0){
+                    todoText=textoLetra[executa];
+                    textoMuda.innerHTML=todoText;
+                }
+                else{
+                    todoText=todoText+textoLetra[executa];
+                    textoMuda.innerHTML=todoText;
+                }
+                
+            executa++;
+            }
+        }
+        if(texto!=null && texto!=''){
+            dividirTexto();
+            var t=setInterval(mostrarTexto,40);
+        }else{
+            alert("Você não digitou nada");
+        }
+        
+        
+    </script>
+    
+</body>
+</html>

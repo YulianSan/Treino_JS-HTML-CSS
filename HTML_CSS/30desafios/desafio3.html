@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudar de cor depois da metade</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing:border-box;
+    }
+    body{
+        display: flex;
+    }
+    .white-rose{
+        position: relative;
+        width: 50%;
+        height: 100vh;
+        background-color: rgb(255, 85, 113);
+        color: white;
+        overflow: hidden;
+    }
+    .black-white{
+        position: relative;
+        width: 50%;
+        height: 100vh;
+        background-color: white;
+        color:black;
+        overflow: hidden;
+    }
+    .text{
+        font-size:30vh;
+        line-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        width: max-content;
+        
+    }
+    .white-rose > .text{
+        position: absolute;
+        animation: text-animation-1 15s linear infinite;
+    }
+    .black-white > .text{
+        position: absolute;
+        animation: text-animation-2 15s linear infinite;
+    }
+    @keyframes text-animation-1{
+        0%{
+            transform: translateX(100vw);
+        }
+        100%{
+            transform: translateX(-230vw);
+        }
+    }
+    @keyframes text-animation-2{
+        0%{
+            transform: translateX(50vw);
+        }
+        100%{
+            transform: translateX(-280vw);
+        }
+    }
+</style>
+<body>
+    <div class="white-rose">
+        <span class="text">
+            OLÁ MUNDO QUE ME ESPERA
+        </span>
+    </div>
+
+    <div class="black-white">
+        <span class="text">
+            OLÁ MUNDO QUE ME ESPERA
+        </span>
+    </div>
+</body>
+</html>

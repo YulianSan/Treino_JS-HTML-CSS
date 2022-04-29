@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brasil</title>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+
+    }
+    .base{
+        background-color: green;
+        width: 600px;
+        height: 350px;
+        margin: auto;
+        margin-top: 40px;
+        position: relative;
+    }
+    .yellow{
+        border: 300px solid transparent;
+        border-top: 175px solid transparent;
+        border-bottom: 175px solid transparent;
+    }
+    .yellow.left{
+        border-right-color:yellow;
+        position: absolute;
+        transform: translateX(-50%);
+    }
+    .yellow.right{
+        border-left-color:yellow;
+        position: absolute;
+        transform: translateX(50%);
+    }
+    .circulo{
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        background-color: blue;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        overflow: hidden;
+    }
+    .faixa{
+        width: 100%;
+        height: 50px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(10deg);
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+        color: black;
+        box-sizing: border-box;
+        padding-top:25px;
+        letter-spacing: 5px;
+        padding-left: 10px;
+        font-size: 10px;
+    }
+    .faixablue{
+        width: 100%;
+        height: 50px;
+        background-color: blue;
+        position: absolute;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+        top: 40%;
+        left: 5px;
+        transform: translateY(-50%) rotate(10deg);
+
+    }
+</style>
+<body>
+    <div class="base">
+        <div class="yellow left"></div>
+        <div class="yellow right"></div>
+        <div class="circulo">
+            <span class="faixa">ORDEM E PROGRESSO</span>
+            <span class="faixablue"></span>
+        </div>
+    </div>
+</body>
+</html>

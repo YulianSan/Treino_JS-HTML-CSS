@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carculador</title>
+</head>
+<style>
+    #painel{
+        font-family: Arial;
+        position: absolute;
+        width: 100%;
+        max-width: 1200px;
+        height: 300px;
+        background-color: #eee;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.384);
+        top: 95%;
+        left: 50%;
+        transform:translate(-50%,-100%);
+        display: flex;
+        flex-direction: column;
+    }
+    #painel > *{
+        height: 50%;
+        width: 100%;
+    }
+    #painel > * > p{
+        margin-left: 20px;
+    }
+</style>
+<body>
+    <form>
+        <input type="text" id="inputCal"> <br />
+        <input type="submit" value="Calcular">
+    </form>
+    <div id="painel">
+        <div id="resultado">
+            <p>Result: </p>
+        </div>
+        <div id="aviso">
+            <p>Avisos: </p>
+        </div>
+    </div>
+</body>
+<script>
+    const form = document.forms[0];
+    const input_calcular = form.elements[0];
+
+    form.addEventListener("submit",(e)=>{ e.preventDefault(); validCalculo(); })
+    
+    function validCalculo(){
+        var yesCalcule = /[^0-9 \-+*/\(\)]/gi
+        if(!input_calcular.value){
+            document.getElementById("aviso").innerHTML+=`
+                <p>Erro: Input emtpy</p>`;
+            return;
+            
+        }
+        if(yesCalcule.test(input_calcular.value)){
+            
+            document.getElementById("aviso").innerHTML+=`
+                <p>Erro: String not permit</p>`;
+            
+            return;
+        }
+        calcular();
+    }
+    function calcular() {
+        var text = `${input_calcular.value}`
+        var init = 0;
+        var resp=0;
+        if(/^[-]/.test(text)){
+            resp=-text.match(/[0-9]{1,}/)[0]
+            init=1;
+        }
+        //console.log(text)
+        var arrayNum = text.split(/[+\-*/]/).filter((v)=>{return v})//pegas apenas os números, filter para tirar os valores vazios
+        //console.log(arrayNum)
+        var arrayOperacoes = text.split(/[0-9]{1,}/).filter((v)=>{return v})//pegar todos as operções
+        //console.log(arrayOperacoes)
+        for(var i=0;i<arrayOperacoes.length-init;i++){
+
+            if(arrayOperacoes[i]=="-"){
+                if(i==0){
+                    //console.log(init)
+
+                    console.log(
+                        parseFloat(arrayNum[ init ]) +
+                         
+                        (init==0? -(parseFloat(arrayNum[ init + 1])) :resp)
+                    );
+
+                    resp+=parseFloat(arrayNum[ init ]) + (init==0? -(parseFloat(arrayNum[ init + 1])) :resp);
+                    continue;
+                }
+                
+                resp-=parseFloat(arrayNum[ i+1+init ]);
+                //console.log(resp)
+            }   
+        }
+        console.log(resp)
+    }
+</script>
+</html>

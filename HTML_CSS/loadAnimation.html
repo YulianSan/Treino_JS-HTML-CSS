@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>_____Carregand...____</title>
+</head>
+<style>
+    *{
+        padding:0px;
+        margin:0px;
+    }
+    .load_animation{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left:30%;
+        top:50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content:space-around;
+        text-align: center;
+        animation: load 5s infinite linear ,moverse 10s infinite;
+    }
+    @keyframes load {
+        0%{transform: translateX(-50%) translateY(-50%) rotate(0deg) scale(1);}
+        50%{transform: translateX(-50%) translateY(-50%) rotate(360deg) scale(1.5)}
+        0%{transform: translateX(-50%) translateY(-50%) rotate(720deg) scale(1);}
+    }
+    @keyframes moverse {
+        0%{left: 30%;}
+        50%{left: 70%;}
+        100%{left:30%;}
+    }
+    .circulo{
+        width:90%;
+        height:90%;
+        text-align: center;
+        border-radius:50%;
+    }
+    #red{
+        background-color: rgb(0, 225, 255);
+    }
+    #green{
+        background-color: rgb(23, 0, 128);
+    }
+    #blue{
+        background-color: rgb(255, 0, 200);
+    }
+    #yellow{
+        background-color: rgb(0, 255, 157);
+    }
+</style>
+<body>
+    <div class="load_animation">
+        <div class="circulo" id="red"></div>
+        <div class="circulo" id="blue"></div>
+        <div class="circulo" id="yellow"></div>
+        <div class="circulo" id="green"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+    body{
+        height: 100vh;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    #base{
+        width: 300px;
+        height: 300px;
+        display: flex;
+        justify-content: space-around;
+        border-top: 8px solid white;
+    }
+    .bolinha{
+        position: relative;
+        width: 2px;
+        height: 100%;
+        background-color: white;
+    }
+    .bolinha::after{
+        content:"";
+        display: block;
+        width: 60px;
+        height: 60px;
+        background-color: white;
+        position: absolute;
+        bottom: 0px;
+        left: -29px;
+        border-radius: 50%;
+    }
+    .bolinha:nth-child(1){
+        animation: bateu-left 5s linear infinite;
+    }
+    .bolinha:last-child{
+        animation: bateu-right 5s linear infinite;
+        animation-delay: 2.5s;
+    }
+    @keyframes bateu-left{
+        0%{
+            transform-origin: 50% 0%;
+            transform:rotate(0deg);
+        }
+        24%{
+            transform-origin: 50% 0%;
+            transform:rotate(45deg);
+        }
+        48%{
+            transform-origin: 50% 0%;
+            transform:rotate(0deg);
+        }
+        100%{
+            transform-origin: 50% 0%;
+            transform:rotate(0deg);
+        }
+    }
+    @keyframes bateu-right{
+        0%{
+            transform-origin: 50% 0%;
+            transform:rotate(0deg);
+        }
+        24%{
+            transform-origin: 50% 0%;
+            transform:rotate(-45deg);
+        }
+        48%{
+            transform-origin: 50% 0%;
+            transform:rotate(0deg);
+        }
+        100%{
+            transform-origin: 50% 0%;
+            transform:rotate(0deg);
+        }
+    }
+</style>
+<body>
+    <div id="base">
+        <div class="bolinha"></div>
+        <div class="bolinha"></div>
+        <div class="bolinha"></div>
+        <div class="bolinha"></div>
+        <div class="bolinha"></div>
+    </div>
+</body>
+</html>

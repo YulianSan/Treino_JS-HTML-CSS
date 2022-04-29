@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    
+</body>
+<script>
+    console.time()
+    //Exemplo 1
+    
+    class Carro{
+        ligado;
+        nome;
+        constructor(n){
+            this.nome=n
+            this.ligado=false
+        }
+        get Olanome(){
+            return this.nome
+        }
+    }
+    var meuCarro1 = new Carro("Carrinho")
+
+    //Exemplo 2
+    var meuCarro2={
+        ligado:false,
+        nome:"Segundo Carro"
+    }
+
+    //Exemplo 3
+    function Carrinhos(n="anonimo",li=false) {
+        this.nome=n
+        this.ligado=li
+    }
+
+    Carrinhos.prototype.getNome=function(){
+        return this.nome
+    }
+    var novoCarro = new Carrinhos()
+    console.log(novoCarro.getNome())
+    //Exemplo de função dentro de função
+    var calcular= n => n * 8 ;
+    
+    var arrayNumber=[1,2,3,4,5]
+    
+    var novoArray = arrayNumber.map(calcular)
+
+    arrayNumber.forEach(value => {
+        console.log(value+1)
+    });
+    var soma = arrayNumber.reduce((v1,v2) => {return v1+v2})
+    var v1 = arrayNumber.filter((v)=>{return v%2==1})
+    var nomes = ["yulian","marcelo","thaissa","natiely","renato"]
+    console.log(nomes.join(", "))
+    function parteDaEquipe(v=[],p=''){
+        return v.includes(p)
+    }
+
+
+    console.log(parteDaEquipe(nomes,"isaque"))
+    var tudoJunto=arrayNumber.join(" ")
+    var nome="yulin"
+    function retorno(n=""){
+
+    }
+    if(["marcelo","yulian","isaque"].includes(nome))
+
+        console.log("sim")
+    var data= ["2005","03","13"].join("-")
+
+    var  texto = "Oi meu nome é marcelinho game prays"
+    texto = texto.split(" ").join("%20")
+    
+    try{
+        //var urlWhats=`htpp://api.whatsapp.com/send?1=pt_BR&phone=55991712418&text=${texto}`;    
+        throw new Error("nao está registrado")
+
+    }
+    catch(e){
+        console.error(e)
+        
+    }
+    
+    var io=1
+    if(io)
+        console.log("true")
+    console.timeLog();
+</script>
+</html>

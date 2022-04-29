@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #blocoCor{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            top: 50px;
+            left: 50px;
+            border: 2px solid black;
+        }
+    </style><div id="blocoCor"></div>
+    <script>
+        var corT;var aleatorio;
+        var bloco=document.getElementById('blocoCor');
+        var cor=new Array();
+        function mudarCor(){
+            for(i=0;i<6;i++){
+                if(i==0){
+                    corT="";
+                    cor.splice(0,5);
+                }
+                aleatorio=Math.floor(Math.random() * 16);
+                
+                switch(aleatorio){
+                    case 0:cor.push("0");break;
+                    case 1:cor.push("1");break;
+                    case 2:cor.push("2");break;
+                    case 3:cor.push("3");break;
+                    case 4:cor.push("4");break;
+                    case 5:cor.push("5");break;
+                    case 6:cor.push("6");break;
+                    case 7:cor.push("7");break;
+                    case 8:cor.push("8");break;
+                    case 9:cor.push("9");break;
+                    case 10:cor.push("A");break;
+                    case 11:cor.push("B");break;
+                    case 12:cor.push("C");break;
+                    case 13:cor.push("D");break;
+                    case 14:cor.push("E");break;
+                    case 15:cor.push("F");break;
+                    
+                }
+              if(i==5){
+                corT=cor[0]+cor[1]+cor[2]+cor[3]+cor[4]+cor[5];
+                
+            }  
+            }
+            corT="#"+corT;
+            bloco.style.backgroundColor=corT;
+            
+        }
+        var t=setInterval(mudarCor,100);
+    </script>
+    
+
+</body>
+</html>

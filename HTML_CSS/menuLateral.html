@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Menu lateral</title>
+    </head>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background-color:#ddd;
+            
+        }
+        .menuLateral{
+            display: flex;
+            flex-direction: column;
+            width: 80px;
+            height: 100vh;
+            padding: 10px;
+            overflow: hidden;
+            background-color: white;
+            transition: all 1s;
+            border-right: 1px solid black;
+            box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.9);
+        }
+        
+        .menuLateral .link{
+            width: 200px;
+        }
+        .menuLateral .link ion-icon{
+            width: 50px;
+            margin-right: 20px;
+            font-size: 30px;
+            color: black;
+        }
+        .menuLateral .link a{
+            color:black;
+            font-family:arial;
+            text-decoration:none;
+            font-weight:600;
+            letter-spacing:.5em;
+            user-select: none;
+        }
+        .menuLateral.open{
+            width: 30vw;
+        }
+        .iconBarra{
+            height:35px;
+            width: 50px;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            left:100%;
+            transform:translateX(-100%);
+            margin-bottom: 50px;
+        }
+        .icon{
+            width: 35px;
+            height:5px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top:8px;
+            background-color:black;
+            transition:all .5s;
+            border-radius:4px;
+            opacity: 1;
+        }
+        .iconBarra.fechar .icon:nth-child(1){
+            transform-origin: 0% 0%;
+            
+            transform:rotate(45deg);
+        }
+        .iconBarra.fechar .icon:nth-child(2){
+            opacity: 0;
+        }
+        .iconBarra.fechar .icon:nth-child(3){
+            transform-origin: 0% 100%;
+            
+            transform:rotate(-45deg);
+        }
+    </style>
+    <script>
+        function openMenu(e){
+            
+            e.classList.toggle("open")
+            barraFechar(document.getElementsByClassName("iconBarra")[0])
+            
+        }
+        function barraFechar(e){
+            e.classList.toggle("fechar")
+            
+            
+        }
+    </script>
+    <body>
+        <div class="menuLateral open">
+            
+                <div class="iconBarra fechar" onclick="openMenu(document.getElementsByClassName('menuLateral')[0])">
+                    <span class="icon"></span>
+                    <span class="icon"></span>
+                    <span class="icon"></span>
+
+                </div>
+            
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU1</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU2</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU3</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU4</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU5</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU6</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU7</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU8</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU9</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU10</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU11</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU8</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU9</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU10</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU11</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU8</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU9</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU10</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU11</a>
+            </span>
+            <span class="link">
+                <ion-icon name="apps-outline"></ion-icon><a href="#">MENU8</a>
+            </span>
+        </div>    
+    </body>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</html>

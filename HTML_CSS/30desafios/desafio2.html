@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação load</title>
+</head>
+<style>
+    div{
+        position: absolute;
+        left: 50%;
+        top:50%;
+        transform:translate(-50%,-50%);
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+        border-radius: 50%;
+        border-right: 3px solid rgba(221, 221, 221, 0.301);
+        border-left: 3px solid black;
+        animation: load 2s linear infinite;
+    }
+    span{
+        position: absolute;
+        left: 50%;
+        top:50%;
+        transform:translate(-50%,-50%);
+    }
+    @keyframes load{
+        0%{
+            transform: translate(-50%,-50%) rotate(0deg);
+        }
+        100%{
+            transform: translate(-50%,-50%) rotate(360deg);
+        }
+    }
+</style>
+<body>
+    <div></div>
+    <span>LOADING</span>
+</body>
+</html>

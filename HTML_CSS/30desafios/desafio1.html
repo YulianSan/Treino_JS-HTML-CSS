@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação rede social</title>
+</head>
+<style>
+    *{
+        padding:0px;
+        margin:0px;
+        box-sizing:border-box;
+    }
+    body{
+        width: 50vw;
+        height: 100vh;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .redes{
+        display: inline-block;
+        position: relative;
+        top:0px;
+        width: 80px;
+        height: 80px;
+    }
+    .redes > img{
+        z-index: 100;
+    }
+    .redes:hover > img{
+        top: -40px;
+    }
+    .redes > *{
+        position: relative;
+        top: 0px;
+        width: 40px;
+        transform: skew(60deg,-45deg);
+        transition: all .3s linear;
+    }
+    .dgrade{
+        position:absolute;
+        top:0px;
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        transform:translateX(-100%) skew(60deg,-45deg);
+        background-color: var(--cor);
+    }
+    .redes:hover > .dgrade{
+        top: var(--sobe);
+    }
+</style>
+<body>
+    <span class="redes">
+        <img src="redes/twitter.webp" alt="twitter">
+        <span 
+            style="--cor:rgba(0, 174, 237, 0.952);--sobe:-35px;"
+            class="dgrade twi"></span>
+        <span 
+            style="--cor:rgba(0, 172, 237, 0.808);--sobe:-30px;"
+            class="dgrade twi"></span>
+        <span 
+            style="--cor:rgba(0, 174, 237, 0.671);--sobe:-25px;" 
+            class="dgrade twi"></span>
+        <span 
+            style="--cor:rgba(0, 172, 237, 0.521);--sobe:-20px;" 
+            class="dgrade twi"></span>
+        <span 
+            style="--cor:rgba(0, 174, 237, 0.39);--sobe:-15px;" 
+            class="dgrade twi"></span>
+        <span 
+            style="--cor:rgba(0, 172, 237, 0.288);--sobe:-10px;" 
+            class="dgrade twi"></span>    
+        <span 
+            style="--cor:rgba(0, 172, 237, 0.158);--sobe:-5px;" 
+            class="dgrade twi"></span>
+        <span 
+            style="--cor:rgba(0, 174, 237, 0.068);--sobe:0px;" 
+            class="dgrade twi"></span>
+    </span>
+    
+    <span class="redes">
+        <img src="redes/facebook.jpg" alt="facebook">
+        <span 
+            style="--cor:rgba(58, 88, 158, 0.808);--sobe:-30px;"
+            class="dgrade twi"></span>
+        <span 
+            style="--cor:rgba(58, 88, 158, 0.521);--sobe:-20px;" 
+            class="dgrade twi"></span>
+        <span 
+            style="--cor:rgba(58, 88, 158, 0.288);--sobe:-10px;" 
+            class="dgrade twi"></span>
+        <span 
+            style="--cor:rgba(58, 88, 158, 0.158);--sobe:0px;" 
+            class="dgrade twi"></span>
+    </span>
+</body>
+</html>
