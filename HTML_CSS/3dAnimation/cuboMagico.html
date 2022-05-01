@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Cubo</title>
+</head>
+<style>
+    .container {
+        width: 150px;
+        height: 150px;
+        margin: 50px auto;
+        position: relative;
+        perspective: 500px;
+    }
+ 
+    #cube {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+
+    }
+    #cube:hover{
+        transform: rotateX(-90deg) rotateY(-90deg);
+    }
+    #cube figure {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border: 2px solid black;
+        position: absolute;
+    }
+    #cube .back {
+        background: hsla(0, 100%, 50%, 0.5); 
+    }
+    #cube .left {
+        background: hsla(60, 100%, 50%, 0.5);
+    }
+    #cube .bottom {
+        background: hsla(120, 100%, 50%, 0.5);
+    }
+    #cube .back {
+        transform: rotateX(0deg);
+    }
+    #cube .left {
+        transform: rotateY(60deg);
+    }
+    #cube .bottom {
+        transform: rotateX(60deg);
+    }
+    #cube .back {
+        transform: rotateX(0deg) translateZ(-75px);
+    }
+    #cube .left {
+        transform: rotateY(90deg) translateZ(-75px);
+    }
+    #cube .bottom {
+        transform: rotateX(90deg) translateZ(-75px);
+    }
+    #cube .front {
+  background: hsla(180, 100%, 50%, 0.5);
+  transform: rotateX(0deg) translateZ(75px);
+}
+#cube .right {
+  background: hsla(240, 100%, 50%, 0.5);
+  transform: rotateY(90deg) translateZ(75px);
+}
+#cube .top {
+  background: hsla(320, 100%, 50%, 0.5);
+  transform: rotateX(90deg) translateZ(75px);
+}
+</style>
+<body>
+    <section class="container">
+        <div id="cube">
+        <figure class="back"></figure>
+        <figure class="front"></figure>
+        <figure class="right"></figure>
+        <figure class="top"></figure>
+        <figure class="left"></figure>
+        <figure class="bottom"></figure>
+        </div>
+    </section>
+</body>
+</html>
