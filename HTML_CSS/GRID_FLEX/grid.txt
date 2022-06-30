@@ -1,0 +1,5 @@
+grid-gap: 10px; da espaço entre os elementos 
+row-gap: 10px;
+column-gap: 10px;  faz a msm coisa so que é mais suportado pelos navegadores
+grid-column: 1/3; fala aonde ele inicia e termina, tbm funciona para row
+grid-row: 1/2; msm coisa que o column

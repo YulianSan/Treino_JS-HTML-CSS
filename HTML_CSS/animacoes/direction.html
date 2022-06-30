@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direction Animation</title>
+</head>
+<style>
+    .bola{
+        position: relative;
+        width   : 100px;
+        height  : 100px;
+
+        border-radius       : 50%;
+        background-color    : burlywood;
+        border              : 2px solid rgb(255, 178, 78);
+        box-sizing          : border-box;
+
+        animation-name              : mover;
+        animation-duration          : 2s;
+        animation-timing-function   : linear;
+        animation-iteration-count   : infinite;
+    }
+    .bola.normal{
+        animation-direction: normal;
+    }
+    .bola.reverse{
+        animation-direction: reverse;
+    }
+    .bola.alternate{
+        animation-direction: alternate;
+    }
+    .bola.alternate-reverse{
+        animation-direction: alternate-reverse;
+    }
+    @keyframes mover {
+        0%{
+            left: 0px;
+        }
+        100%{
+            left: 100px;
+        }
+    }
+</style>
+<body>
+    <div class="bola"></div>
+    <input type="button" id="btn_n" value="normal"></input>
+    <input type="button" id="btn_r" value="reverse"></input>
+    <input type="button" id="btn_a" value="alternate"></input>
+    <input type="button" id="btn_s" value="alternate-reverse"></input>
+</body>
+<script>
+    const bola  =   document.getElementsByClassName("bola")[0]
+
+    const btn_n = [ 
+        document.getElementById( "btn_n" ),
+        document.getElementById( "btn_r" ),
+        document.getElementById( "btn_a" ),
+        document.getElementById( "btn_s" )
+    ];
+    
+    btn_n.forEach( v => {
+
+        v.addEventListener("click", i =>{ addDirection(v.value); })
+
+    });
+
+    function addDirection(classe) {
+        // bola.classList.remove(classeOld);
+        clearDirectionClass();
+        bola.classList.add(classe);
+    }
+    
+    function clearDirectionClass() {
+        let classeOld = 
+        bola.classList.value.split(" ").filter( v => v!="bola");
+        
+        if(classeOld) 
+            classeOld.forEach( v => bola.classList.remove(v));
+    }
+</script>
+</html>

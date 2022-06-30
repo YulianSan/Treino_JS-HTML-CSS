@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>teste de função que retorna uma função</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        function select(){
+            return {
+                from(table = ""){
+
+                    return {
+                        where(filtro = ""){
+                            console.log(`SELECT * FROM ${table} WHERE ${filtro}`);
+                            return true;
+                        },
+                        end:()=>console.log(`SELECT * FROM ${table}`)
+                    }
+                }
+            }
+        }
+
+
+        select().
+        from("users").end();
+    </script>
+</html>

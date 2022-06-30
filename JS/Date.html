@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horas</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var dataAtual = new Date();
+    console.log(Date.now());
+    console.log(dataAtual.toLocaleDateString('pt-BR'))//return a data de acordo com seu idioma
+    var CurrentTime = [
+        dataAtual.getDate().toString().length==1 ? "0"+dataAtual.getDate():dataAtual.getDate(),
+        dataAtual.getMonth().toString().length==1? "0"+dataAtual.getMonth():dataAtual.getMonth(),
+        dataAtual.getFullYear()
+    ].join('/');
+    console.log(CurrentTime)
+</script>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arraste</title>
+</head>
+<style>
+    #foo, #baz, #bar {
+        position: absolute;
+        z-index: 1000;
+        width: 200px;
+        height: 200px;
+        background-color: #fc0;
+    }
+    
+    .isMoving {
+       z-index: 1001 !important;
+    }
+    
+    #baz {
+        top: 210px;
+        left: 210px;
+        background-color: #f00;
+    }
+    
+    #bar {
+        top: 410px;
+        left: 410px;
+        background-color: #00f;
+    }
+</style>
+<body>
+    <div id="foo"></div>
+    <div id="bar"></div>
+    <div id="baz"></div>
+</body>
+<script>
+    window.onload = function () {
+    Dragable(document.getElementById("foo"));
+    Dragable(document.getElementById("baz"));
+    Dragable(document.getElementById("bar"));
+};
+
+//Adiciona eventos pra navegadores modernos e antigos
+function addEvent(el, type, callback)
+{
+    if (el.addEventListener) {
+       el.addEventListener(type, callback);
+    } else if (el.attachEvent) {
+       el.attachEvent("on" + type, callback);
+    }
+}
+
+function Dragable(el)
+{
+    var isMove = false, //Verifica se esta se movendo
+        x = 0, y = 0, //Pega as coordenadas do mouse
+        xel = 0, yel = 0; // ultima posição do elemento
+
+    addEvent(el, "mousedown", function (e) {
+        isMove = true;
+
+        el.className += " isMoving";
+
+        x = window.event ? window.event.clientX : e.pageX;
+        y = window.event ? window.event.clientY : e.pageY;
+        xel = x - el.offsetLeft;//pega o espaço que o elemento tem da borda esquerda da página
+        yel = y - el.offsetTop;
+        console.log(e);
+        console.log(xel + "\n" + yel);
+    });
+
+    addEvent(document, "mousemove", function (e) {
+        if (isMove) {
+            e.preventDefault();
+
+            x = window.event ? window.event.clientX : e.pageX;
+            y = window.event ? window.event.clientY : e.pageY;
+            console.log("1- "+window.event.clientY+"\n2-"+e.pageY)
+            el.style.left = (x - xel) + 'px';
+            el.style.top  = (y - yel) + 'px';
+        }
+    });
+
+    addEvent(document, "mouseup", function () {
+        el.className = String(el.className).replace(/(^|\s)isMoving(\s|$)/g, " ");
+        isMove = false;
+    });
+};
+</script>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <title>Cubo</title>
+</head>
+
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: 'Great Vibes', cursive;
+        user-select: none;
+    }
+    html{
+        background: url(https://w0.peakpx.com/wallpaper/885/874/HD-wallpaper-fire-explosion-light-space.jpg) center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    .plano{
+        display: grid;
+
+        justify-content: center;
+        align-items: center;
+
+        width : 100vw;
+        height: 100vh;
+
+        
+    }
+    .papel{
+        position: relative;
+        
+        transform-style: preserve-3d;
+        
+        padding: 30px;
+        width : 300px;
+        height: 400px;
+        background-color: white;
+        transform: rotateY(0deg);
+
+        backface-visibility: hidden;
+        box-shadow: 0px 0px 40px 20px black;
+    }
+    
+    .papelBack{
+        position: absolute;
+        top:0px;
+        left:0px;
+        
+        width : 300px;
+        height: 400px;
+        background-color: white;
+
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+    }
+    .titulo{
+        position: absolute;
+
+        padding: 20px;
+        background-color: rgb(245, 245, 245);
+
+        top:0px;
+        left: 47%;
+        transform: translateX(-50%) translateZ(100px);
+
+        font-size: 50px;
+    }
+    .texto{
+        position: absolute;
+
+        text-align: justify;
+        text-decoration: underline;
+        text-decoration-color: rgb(58, 58, 58);
+        top: 80px;
+        font-size: 16px;
+        transform: translateZ(10px);
+        
+        left: 0px;
+        padding: 30px;
+    }
+    
+    .boracha{
+        position: absolute;
+        
+        right : 30px;
+        bottom: 30px;
+
+        width: 20px;
+        height: 30px;
+
+        background-color: rgb(255, 86, 114);        
+        box-shadow: 5px 0px 5px black;
+        transform: rotate(30deg);
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+    }
+
+    .front{
+        position: absolute;
+
+        width: 20px;
+        height: 30px;
+        background-color: rgb(255, 86, 114);
+        box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+                    inset -2px -2px 5px rgb(219, 47, 76);
+        transform: translateZ(15px);
+    }
+
+    .left{
+        position: absolute;
+        width: 15px;
+        height: 30px;
+        left: -13px;
+
+        transform-origin: right;
+        transform: rotateY(90deg);
+        background-color: rgb(255, 65, 97);
+        box-shadow: inset 5px 0px 5px rgba(255, 255, 255, 0.5);
+    }
+
+    .bottom{
+        position: absolute;
+        top:  30px;
+        left: .9px;
+        width: 20px;
+        height: 15px;
+
+        transform-origin: top;
+        transform: skewX(30deg) rotateX(90deg);
+        background-color: rgb(255, 65, 97);
+        box-shadow: inset -2px 2px 10px rgba(0, 0, 0 , .5);
+    }
+
+    .right{
+        position: absolute;
+        left: 5px;
+        top: 0.5px;
+        width: 15px;
+        height: 29px;
+
+        transform-origin: right;
+        transform: skewY(60deg) rotateY(90deg);
+        background-color: rgb(255, 65, 97);
+        box-shadow: inset -2px -2px 10px rgba(0, 0, 0 , .5);
+    }
+    .top{
+        position: absolute;
+        left: 0.1px;
+        width: 20.7px;
+        height: 15px;
+
+        transform-origin: top;
+        transform: skewX(30deg) rotateX(90deg);
+        background-color: rgb(255, 65, 97);
+        box-shadow: inset 5px -2px 5px rgba(255, 255, 255, 0.5);
+    }
+
+    .caneta{
+        position: absolute;
+
+        width: 200px;
+        height: 10px;
+        
+        bottom: 15px;
+        transform: rotate(-5deg);
+
+        
+    }
+    .base{
+        position:absolute;
+        left: 20px;
+        width: 180px;
+        height: 10px;
+        background-color: black;
+        z-index: 100;
+        box-shadow: 10px 10px 20px black,
+            inset 0px -2px 2px rgb(0, 0, 0),        
+            inset 0px -3px 5px white;
+    }
+    .ponta{
+        position: absolute;
+        top: -3.5px;
+        left: 3px;
+        width: 20px;
+        height: 10px;
+        background-color: rgb(255, 212, 163);
+        transform: rotate(20deg);
+    }
+    .ponta::after{
+        content: "";
+
+        display: block;
+        position: absolute;
+        top:-16px;
+        left: -10px;
+        width: 50px;
+        height: 15px;
+        background-color: white;
+        transform: rotate(-40deg);
+    }
+    .ponta::before{
+        content: "";
+
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 4px;
+        width: 5px;
+        height: 5px;
+        background-color: rgb(0, 0, 0);
+    }
+</style>
+
+<body>
+    <div class="plano">
+        
+        <div class="papel">
+            <div class="papelBack"></div>
+            <div class="titulo"> Cartinha</div>
+            <div class="texto"> 
+                Minha filha, antes de você existir eu sonhava com você. Quando soube que a carregava no meu ventre eu imaginava como seriam seus olhos, seu sorriso, e como a iria amar por toda vida.
+
+                Mas quando você chegou tudo que sonhei e imaginei um dia ficou pequeno e insignificante. Pois você, minha filha, fez nascer um amor no meu coração como nunca sonhei possível.
+                
+                Você superou todas as minhas expectativas e me transformou na mãe mais feliz e realizada do mundo. Hoje eu continuo sonhando, acordada e dormindo, mas apenas com a sua felicidade. Te amo, minha filha!
+            </div>
+
+            <div class="caneta">
+                <div class="base"></div>
+                <div class="ponta"></div>
+            </div>
+            <div class="boracha">
+                <div class="front" ></div>
+                <div class="left"  ></div>
+                <div class="right" ></div>
+                <div class="top"   ></div>
+                <div class="bottom"></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

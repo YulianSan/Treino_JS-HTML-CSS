@@ -8,17 +8,22 @@
 </head>
 <style>
     body{
-        height: 100vh;
+        font-size: 20px;
+        height: 90vh;
+        padding: 1em;
+        box-sizing: border-box;
     }
     .base{
         width: 50px;
         height: 10px;
+        border-radius:5px ;
+        box-shadow: 0px 0px 20px 10px rgb(255, 0, 0);/*o quarto parametro é quando ele vai sobre sair do elemento, quando ele vai ter a mais que o elemento tem*/
         background-color: black;
-        transform: translate3d(1px,1px,1px);
+        transition: all 1s linear;
     }
     .base:hover{
-        transform: translate3d(1px, 1px, 100px);
-    } 
+        box-shadow: 0px 20px 20px 10px rgb(255, 0, 0);
+    }
 </style>
 <body>
     <div class="base">

@@ -56,7 +56,15 @@
             e.preventDefault()
         })
         value.addEventListener("drop", e=>{
-            e.target.appendChild(selecionado)
+
+            if(e.target.classList == "element"){
+                e.preventDefault()
+                document.getElementsByClassName("zona_drop")[1].appendChild(selecionado);
+            
+            }else{
+                e.target.appendChild(selecionado);
+            }
+            
 
         })
     })
@@ -71,9 +79,8 @@
     elementosArrastaveis.forEach((value) => {
 
         value.addEventListener("dragstart",e => {
-
-            selecionado = e.target
-            //console.log(selecionado)
+            var elementoClone = e.target.cloneNode(true);//faz um clone desse elemento
+            selecionado = e.target;
 
         })
 

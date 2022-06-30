@@ -1,0 +1,37 @@
+*{
+    padding: 0px;
+    margin:0px;
+    box-sizing: border-box;
+}
+html{
+    font-size: 10px;
+}
+body{
+    background-color: #505;
+    display: grid;
+    grid-template-columns: 3fr 1fr;/*divide a area em duas colunas uma 3fr e outra 1fr*/
+    grid-template-rows: 20vh auto 20vh;/*divide em 3 linhas, setando cada tamanho de area*/
+    grid-template-areas: "h h" "m a" "f f";/*coloca um nome para cada area, são duas colunas e 3 rows, então informamos cada area que são no total 6 (3*2), cada coluna deve ser uma nova string*/
+}
+body > *{
+    padding: 2rem;/*padding de acordo com o tamanho da fonte, n*font EX: 1em 1*24
+        rem(root em) pega o tamanho raiz
+        em pega o tamanho do elemento*/
+}
+header{
+    background-color: rgb(35, 168, 35);
+    grid-area: h;/*fala que area ele vai ocupar do grid-template-areas*/
+}
+main{
+    font-size: 20px;
+    background-color: rgb(252, 252, 118);
+    grid-area: m;
+}
+aside{
+    background-color: rgb(51, 64, 139);
+    grid-area: a;
+}
+footer{
+    background-color: rgb(230, 111, 111);
+    grid-area: f;
+}

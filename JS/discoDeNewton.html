@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disco de Newton</title>
+</head>
+<style>
+    *{
+        margin      :0px;
+        padding     :0px;
+        box-sizing  : border-box;
+    }
+    
+    
+    .circulo{
+        position: absolute;
+
+        top : 50%;
+        left: 50%;
+        transform: translate( -50%, -50% );
+
+        width  : 250px;
+        height : 250px;
+        background-color: #ddd;
+        
+        border-radius   : 50%;
+        overflow        : hidden;
+
+        animation: rodar 1ms infinite linear;
+    }
+    @keyframes rodar {
+        0%{
+            transform: translate( -50%, -50% ) rotate(0deg);
+        }
+        100%{
+            transform: translate( -50%, -50% ) rotate(360deg);
+        }
+    }
+
+
+    .triangulo{
+        position: absolute;
+        
+        left: 50%;
+        transform-origin: bottom;
+        transform: translateX( -50% ) rotate( var(--rot) );
+
+        width : 0px;
+        height: 0px;
+
+        border          : 65px solid transparent;
+        border-top      : 125px solid var(--cor);
+        border-bottom   : 0px solid transparent;
+    }
+
+    .barra{
+        
+        width : 50px;
+        height: 100vh;
+        background-color: black;
+    }
+    #inp_vel{
+        position: relative;
+
+        transform: translate(-41px,0px) rotate(90deg);
+        top: 50%;
+
+    }
+</style>
+<body>
+    <div class="circulo">
+        <div class="triangulo" style="--cor:#ff8000;--rot:0deg;"></div>
+        <div class="triangulo" style="--cor:#ff0000;--rot:51deg;"></div>
+        <div class="triangulo" style="--cor:#9400d3;--rot:calc(51deg * 2);"></div>
+        <div class="triangulo" style="--cor:#4b0082;--rot:calc(51deg * 3);"></div>
+        <div class="triangulo" style="--cor:#0000ff;--rot:calc(51deg * 4);"></div>
+        <div class="triangulo" style="--cor:#008000;--rot:calc(51deg * 5);"></div>
+        <div class="triangulo" style="--cor:#ffff00;--rot:calc(51deg * 6);"></div>
+    </div>
+
+    <div class="barra">
+        <input type="range" min="0" max="360" value="0" id="inp_vel">
+    </div>
+
+    <script>
+        const inp_vel = document.getElementById("inp_vel");
+
+        inp_vel.addEventListener("change",(event)=>{
+            console.log(event.target.value);
+        })
+    </script>
+</body>
+</html>

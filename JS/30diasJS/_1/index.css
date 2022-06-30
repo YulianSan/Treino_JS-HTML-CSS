@@ -1,0 +1,56 @@
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    width:100vw;
+    height:100vh;
+    background:url(./pessoas.jpg) center center no-repeat;
+    background-size: cover;
+    display:table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+#teclas{
+    width:100%;
+    margin:0 auto;
+    max-width: 1200px;
+    min-width: 500px;
+    display: flex;
+    justify-content:space-evenly;
+}
+.tecla{
+    --h:70px;
+    width: 90px;
+    height:var(--h);
+    text-align: center;
+    background-color:rgba(0, 0, 0, 0.6);
+    border: 2px solid black;
+    font-weight: bold;
+}
+.tecla .key{ 
+    font-size:30px;
+    color:white;
+    margin-top:5px;
+    line-height: calc(var(--h)*3/5);
+}
+.tecla .nome{
+    text-transform:uppercase;
+    font-size:10px;
+    color:rgb(255, 230, 0);
+    line-height: calc(var(--h)/5);
+}
+.tecla.ativo{
+    animation:destaque .2s linear;
+}
+@keyframes destaque {
+    50%{
+        box-shadow: 0px 0px 5px 5px rgb(255, 174, 0);
+    }
+    0%,100%{
+        box-shadow: 0px 0px 0px yellow;
+    }
+}
