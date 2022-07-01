@@ -57,6 +57,7 @@
         top:0px;
         left:0px;
         
+        z-index: 1000;
         width : 300px;
         height: 400px;
         background-color: white;
@@ -94,14 +95,15 @@
         position: absolute;
         
         right : 30px;
-        bottom: 30px;
+        bottom: 70px;
 
         width: 20px;
         height: 30px;
 
         background-color: rgb(255, 86, 114);        
-        box-shadow: 5px 0px 5px black;
-        transform: rotate(30deg);
+        box-shadow: 10px 5px 15px 2px black;
+
+        transform: rotate(30deg) translateZ(1px);
         backface-visibility: hidden;
         transform-style: preserve-3d;
     }
@@ -166,34 +168,179 @@
         box-shadow: inset 5px -2px 5px rgba(255, 255, 255, 0.5);
     }
 
-    .caneta{
+    .lapis{
         position: absolute;
 
         width: 200px;
         height: 10px;
         
         bottom: 15px;
-        transform: rotate(-5deg);
+        transform: rotate(-5deg) translateZ(1px);
+        transform-style: preserve-3d;
 
+        box-shadow: 15px 15px 10px black;
+        backface-visibility: hidden;
         
     }
-    .base{
+    .cima{
         position:absolute;
         left: 20px;
+        top:  2.5px;
+
         width: 180px;
-        height: 10px;
-        background-color: black;
-        z-index: 100;
-        box-shadow: 10px 10px 20px black,
+        height: 4px;
+        background-color: rgb(26, 26, 26);
+        
+        /* box-shadow: 10px 10px 20px black,
             inset 0px -2px 2px rgb(0, 0, 0),        
-            inset 0px -3px 5px white;
+            inset 0px -3px 5px white; */
+
+        transform: translateZ(5.5px);
     }
+    
+    .cima-direita{
+        position:absolute;
+        left: 20px;
+        top : 3.5px;
+
+        width: 180px;
+        height: 4px;
+        background-color: rgb(56, 56, 56);
+
+        /* box-shadow: 10px 10px 20px black,
+            inset 0px -2px 2px rgb(0, 0, 0),        
+            inset 0px -3px 5px white; */
+
+        transform-origin: top;
+        transform: rotateX(45deg) translateZ(4.5px);
+    }
+
+    .cima-esquerda{
+        position:absolute;
+        left: 20px;
+        top : 1.5px;
+
+        width: 180px;
+        height: 4px;
+        background-color: rgb(10, 10, 10);
+
+        /* box-shadow: 10px 10px 20px black,
+            inset 0px -2px 2px rgb(0, 0, 0),        
+            inset 0px -3px 5px white; */
+
+        transform-origin: bottom;
+        transform: rotateX(-45deg) translateZ(4.5px);
+    }
+
+    .meio-direita{
+        position:absolute;
+        left: 20px;
+        top : 3px;
+
+        width: 180px;
+        height: 4px;
+        background-color: rgb(76, 76, 76);
+
+        /* box-shadow: 10px 10px 20px black,
+            inset 0px -2px 2px rgb(0, 0, 0),        
+            inset 0px -3px 5px white; */
+
+        transform-origin: top;
+        transform: rotateX(90deg) translateZ(3px);
+    }
+
+    .meio-esquerda{
+        position:absolute;
+        left: 20px;
+        top : 12px;
+
+        width: 180px;
+        height: 4px;
+        background-color: black;
+
+        /* box-shadow: 10px 10px 20px black,
+            inset 0px -2px 2px rgb(0, 0, 0),        
+            inset 0px -3px 5px white; */
+
+        transform-origin: top;
+        transform: rotateX(90deg) translateZ(3px);
+    }
+
+    .baixo-direita{
+        position:absolute;
+        left: 20px;
+        top : -2.5px;
+
+        width: 180px;
+        height: 4px;
+        background-color: rgb(26, 26, 26);
+
+        /* box-shadow: 10px 10px 20px black,
+            inset 0px -2px 2px rgb(0, 0, 0),        
+            inset 0px -3px 5px white; */
+
+        transform-origin: bottom;
+        transform: rotateX(-45deg);
+    }   
+    .baixo-esquerda{
+        position:absolute;
+        left: 20px;
+        top : 7.5px;
+
+        width: 180px;
+        height: 4px;
+        background-color: rgb(0, 0, 0);
+
+        /* box-shadow: 10px 10px 20px black,
+            inset 0px -2px 2px rgb(0, 0, 0),        
+            inset 0px -3px 5px white; */
+
+        transform-origin: top;
+        transform: rotateX(45deg);
+    } 
+
+    .bunda-lapis{
+        position:absolute;
+        left: 194px;
+
+        width : 6px;
+        height: 9px;
+        border-radius: 50%;
+
+        background-color: rgb(255, 182, 98);
+
+        transform-origin: right;
+        transform: rotateY(90deg);
+        transform-style: preserve-3d;
+    }
+
+    .bunda-lapis::after{
+        content: "";
+
+        position:absolute;
+        display: block;
+
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        width : 3px;
+        height: 3px;
+        border-radius: 50%;
+
+        background-color: rgb(0, 0, 0);
+
+        transform-origin: right;
+    }
+
     .ponta{
         position: absolute;
         top: -3.5px;
         left: 3px;
+
         width: 20px;
         height: 10px;
+        
         background-color: rgb(255, 212, 163);
         transform: rotate(20deg);
     }
@@ -214,10 +361,13 @@
 
         display: block;
         position: absolute;
+        
         top: 5px;
         left: 4px;
+        
         width: 5px;
         height: 5px;
+
         background-color: rgb(0, 0, 0);
     }
 </style>
@@ -229,17 +379,31 @@
             <div class="papelBack"></div>
             <div class="titulo"> Cartinha</div>
             <div class="texto"> 
-                Minha filha, antes de você existir eu sonhava com você. Quando soube que a carregava no meu ventre eu imaginava como seriam seus olhos, seu sorriso, e como a iria amar por toda vida.
-
-                Mas quando você chegou tudo que sonhei e imaginei um dia ficou pequeno e insignificante. Pois você, minha filha, fez nascer um amor no meu coração como nunca sonhei possível.
-                
-                Você superou todas as minhas expectativas e me transformou na mãe mais feliz e realizada do mundo. Hoje eu continuo sonhando, acordada e dormindo, mas apenas com a sua felicidade. Te amo, minha filha!
+                Ter amigos engraçados nos
+                momentos de alegria...
+                Ter amigos companheiros nos momentos
+                de tristeza..
+                Ter amigos que nos ouvem quando precisarmos falar...
+                Ter amigos que falam o que
+                precisamos ouvir...Ter amigos que enxugam nossas
+                lágrimas quando precisarmos chorar..
+                Ter amigos que brincam, choram, gritam..
+                Acima de tudo...o importante é ter
+                amigos
             </div>
 
-            <div class="caneta">
-                <div class="base"></div>
+            <div class="lapis">
+                <div class="cima"></div>
+                <div class="cima-direita"></div>
+                <div class="cima-esquerda"></div>
+                <div class="meio-direita"></div>
+                <div class="meio-esquerda"></div>
+                <div class="baixo-direita"></div>
+                <div class="baixo-esquerda"></div>
                 <div class="ponta"></div>
+                <div class="bunda-lapis"></div>
             </div>
+
             <div class="boracha">
                 <div class="front" ></div>
                 <div class="left"  ></div>
