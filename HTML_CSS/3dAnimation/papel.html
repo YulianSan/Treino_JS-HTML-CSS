@@ -46,7 +46,7 @@
         width : 300px;
         height: 400px;
         background-color: white;
-        transform: rotateY(0deg);
+        transform: rotateY(0deg) rotateX(0deg);
 
         backface-visibility: hidden;
         box-shadow: 0px 0px 40px 20px black;
@@ -333,42 +333,56 @@
         transform-origin: right;
     }
 
-    .ponta{
-        position: absolute;
-        top: -3.5px;
-        left: 3px;
+    .frente-lapis{
+        position:absolute;
+        left: 13.8px;
 
-        width: 20px;
-        height: 10px;
-        
-        background-color: rgb(255, 212, 163);
-        transform: rotate(20deg);
+        width : 6px;
+        height: 9px;
+        border-radius: 50%;
+
+        background-color: rgb(255, 182, 98);
+
+        transform-origin: right;
+        transform: rotateY(90deg);
+        transform-style: preserve-3d;
     }
-    .ponta::after{
+
+    .frente-lapis::after{
         content: "";
 
+        position:absolute;
         display: block;
-        position: absolute;
-        top:-16px;
-        left: -10px;
-        width: 50px;
-        height: 15px;
-        background-color: white;
-        transform: rotate(-40deg);
-    }
-    .ponta::before{
-        content: "";
 
-        display: block;
-        position: absolute;
-        
-        top: 5px;
-        left: 4px;
-        
-        width: 5px;
-        height: 5px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        width : 3px;
+        height: 3px;
+        border-radius: 50%;
 
         background-color: rgb(0, 0, 0);
+
+        transform-origin: right;
+    }
+
+    .div-rotacaoY{
+        position: absolute;
+
+        top : 95%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+    }
+
+    .div-rotacaoX{
+        position: absolute;
+
+        top : 50%;
+        left: 10%;
+
+        transform: translate(-50%, -50%) rotate(90deg);
     }
 </style>
 
@@ -379,17 +393,7 @@
             <div class="papelBack"></div>
             <div class="titulo"> Cartinha</div>
             <div class="texto"> 
-                Ter amigos engraçados nos
-                momentos de alegria...
-                Ter amigos companheiros nos momentos
-                de tristeza..
-                Ter amigos que nos ouvem quando precisarmos falar...
-                Ter amigos que falam o que
-                precisamos ouvir...Ter amigos que enxugam nossas
-                lágrimas quando precisarmos chorar..
-                Ter amigos que brincam, choram, gritam..
-                Acima de tudo...o importante é ter
-                amigos
+                Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe Cringe 
             </div>
 
             <div class="lapis">
@@ -400,8 +404,12 @@
                 <div class="meio-esquerda"></div>
                 <div class="baixo-direita"></div>
                 <div class="baixo-esquerda"></div>
-                <div class="ponta"></div>
+                
+                <div class="ponta-cima"></div>
+                <div class="ponta-esquerda"></div>
+                
                 <div class="bunda-lapis"></div>
+                <div class="frente-lapis"></div>
             </div>
 
             <div class="boracha">
@@ -414,5 +422,41 @@
         </div>
 
     </div>
+    
+    <div class="div-rotacaoY">
+        <input type="range" id="rotacaoY" min="0" max="200">
+    </div>
+
+    <div class="div-rotacaoX">
+        <input type="range" id="rotacaoX" min="0" max="200">
+    </div>
+    
+    <script>
+        const inp_rotacaoY = document.getElementById("rotacaoY");
+        const inp_rotacaoX = document.getElementById("rotacaoX");
+        const papel        = document.getElementsByClassName("papel")[0];
+        const valor        = { X: 0, Y: 0 };
+
+        inp_rotacaoY.addEventListener("mousemove", event => alterarRotalcao(event, "Y") );
+        inp_rotacaoY.addEventListener("change"   , event => alterarRotalcao(event, "Y") );
+
+        inp_rotacaoX.addEventListener("mousemove", event => alterarRotalcao(event, "X") );
+        inp_rotacaoX.addEventListener("change"   , event => alterarRotalcao(event, "X") );
+
+        function alterarRotalcao( event, direcaoRotacao ) {
+            
+            if(valor[direcaoRotacao] === event.target.value) return ;
+            
+            
+            valor[direcaoRotacao] = event.target.value;
+
+            let valorGrausX = ( valor["X"] * 360 ) /100;
+            let valorGrausY = ( valor["Y"] * 360 ) /100;
+
+            papel.style.transform = 
+                `rotateX( ${valorGrausX}deg )
+                 rotateY( ${valorGrausY}deg )`;
+        }
+    </script>
 </body>
 </html>
